@@ -3,21 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Campo de Girasoles Nocturno 🌻 Flores Amarillas</title>
+  <title>Campo de Tulipanes Nocturno 🌷 Flores Mágicas</title>
 
   <!-- Google Fonts & Tailwind CDN -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Great+Vibes&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    :root {
-      --sun-gold: #ffd54f;
-      --sun-amber: #ff9800;
-      --sun-deep: #bf360c;
-    }
-
     * {
       user-select: none;
       -webkit-tap-highlight-color: transparent;
@@ -27,7 +21,7 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: radial-gradient(ellipse at 50% 60%, #161005 0%, #0c0803 35%, #050406 75%, #020203 100%);
+      background: radial-gradient(ellipse at 50% 60%, #170d1a 0%, #0d0612 35%, #060408 75%, #020104 100%);
       font-family: 'Quicksand', sans-serif;
       color: #fff;
     }
@@ -40,7 +34,7 @@
       font-family: 'Cinzel', serif;
     }
 
-    /* Animaciones orgánicas de mecido por la brisa con desfases */
+    /* Animaciones orgánicas de mecido por la brisa */
     @keyframes windSwayLeft {
       0%, 100% { transform: rotate(0deg); }
       50% { transform: rotate(-5deg) translateY(-2px); }
@@ -71,7 +65,7 @@
       animation: windSwayCenter 4.7s ease-in-out infinite;
     }
 
-    /* Nacimiento y crecimiento de los tallos y flores sembradas */
+    /* Nacimiento y crecimiento de los tallos y tulipanes */
     .stem-grow {
       stroke-dasharray: 600;
       stroke-dashoffset: 600;
@@ -85,8 +79,8 @@
     }
 
     .flower-bloom {
-      transform-origin: center;
-      transform: scale(0) rotate(-40deg);
+      transform-origin: center bottom;
+      transform: scale(0) rotate(-20deg);
       animation: bloomIn 1.2s cubic-bezier(0.34, 1.45, 0.64, 1) forwards;
     }
 
@@ -97,35 +91,35 @@
     }
 
     .glass-dark {
-      background: rgba(14, 12, 18, 0.82);
+      background: rgba(18, 12, 22, 0.84);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 215, 0, 0.32);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 193, 7, 0.15);
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(236, 72, 153, 0.15);
     }
 
     .btn-action {
-      background: linear-gradient(135deg, rgba(255, 193, 7, 0.22) 0%, rgba(255, 143, 0, 0.42) 50%, rgba(255, 193, 7, 0.22) 100%);
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.25) 0%, rgba(219, 39, 119, 0.45) 50%, rgba(244, 114, 182, 0.25) 100%);
       transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     .btn-action:hover {
-      background: linear-gradient(135deg, rgba(255, 193, 7, 0.48) 0%, rgba(255, 153, 0, 0.7) 50%, rgba(255, 193, 7, 0.48) 100%);
+      background: linear-gradient(135deg, rgba(244, 114, 182, 0.5) 0%, rgba(236, 72, 153, 0.75) 50%, rgba(244, 114, 182, 0.5) 100%);
       transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 0 24px rgba(255, 215, 0, 0.6);
+      box-shadow: 0 0 24px rgba(244, 114, 182, 0.6);
     }
 
     .custom-scroll::-webkit-scrollbar {
       width: 5px;
     }
     .custom-scroll::-webkit-scrollbar-thumb {
-      background: rgba(255, 215, 0, 0.35);
+      background: rgba(244, 114, 182, 0.35);
       border-radius: 999px;
     }
   </style>
 </head>
 <body class="relative w-screen h-screen overflow-hidden select-none">
 
-  <!-- Canvases de cielo nocturno, partículas doradas y toques interactivos -->
+  <!-- Canvases de cielo nocturno, partículas mágicas y toques interactivos -->
   <canvas id="starsCanvas" class="absolute inset-0 pointer-events-none z-0"></canvas>
   <canvas id="ambientCanvas" class="absolute inset-0 pointer-events-none z-10"></canvas>
   <canvas id="interactiveCanvas" class="absolute inset-0 pointer-events-auto z-20 cursor-pointer"></canvas>
@@ -134,23 +128,23 @@
   <header class="absolute top-4 left-0 right-0 z-30 flex flex-col items-center px-4 pointer-events-none">
     <div class="pointer-events-auto text-center max-w-md px-6 py-2.5 rounded-2xl glass-dark">
       <div class="flex items-center justify-center gap-1.5 mb-0.5">
-        <span class="text-xs uppercase tracking-widest text-amber-300 font-cinzel font-bold">
-          ✨ Feliz dia ✨
+        <span class="text-xs uppercase tracking-widest text-pink-300 font-cinzel font-bold">
+          ✨ Feliz día ✨
         </span>
       </div>
-      <h1 class="text-2xl sm:text-3xl font-romantic text-yellow-200 tracking-wide drop-shadow-[0_0_14px_rgba(255,215,0,0.6)]">
-        Ya vez que si puede 💛
+      <h1 class="text-2xl sm:text-3xl font-romantic text-pink-200 tracking-wide drop-shadow-[0_0_14px_rgba(244,114,182,0.6)]">
+        Campito de tulipanes 🌷
       </h1>
-      <p class="text-[11px] text-amber-100/80 font-medium tracking-wide">
-        Espero que te guste, con mucho cariño 🌻
+      <p class="text-[11px] text-pink-100/80 font-medium tracking-wide">
+        Espero que te guste, con mucho cariño 🌷
       </p>
     </div>
   </header>
 
   <!-- Barra de acciones inferior -->
   <footer class="absolute bottom-5 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 sm:gap-4 pointer-events-auto px-4 py-2 rounded-full glass-dark">
-    <!-- Botón de música ambiental sintetizada -->
-    <button id="musicToggleBtn" title="Activar/Pausar melodía" class="btn-action flex items-center justify-center w-11 h-11 rounded-full text-yellow-300 border border-yellow-400/40">
+    <!-- Botón de música ambiental -->
+    <button id="musicToggleBtn" title="Activar/Pausar melodía" class="btn-action flex items-center justify-center w-11 h-11 rounded-full text-pink-300 border border-pink-400/40">
       <svg id="musicIconPlay" class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M8 5v14l11-7z"/>
       </svg>
@@ -160,143 +154,158 @@
     </button>
 
     <!-- Botón para abrir la dedicatoria -->
-    <button id="openLetterBtn" class="btn-action px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide text-amber-100 flex items-center gap-2 border border-yellow-400/50">
+    <button id="openLetterBtn" class="btn-action px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide text-pink-100 flex items-center gap-2 border border-pink-400/50">
       <span class="text-base">💌</span>
       <span>Abrir dedicatoria</span>
     </button>
 
     <!-- Botón de Re-florecimiento del campo -->
-    <button id="rebloomBtn" title="Hacer florecer todo el campo de nuevo" class="btn-action flex items-center justify-center w-11 h-11 rounded-full text-yellow-300 border border-yellow-400/40">
+    <button id="rebloomBtn" title="Hacer florecer todos los tulipanes de nuevo" class="btn-action flex items-center justify-center w-11 h-11 rounded-full text-pink-300 border border-pink-400/40">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
       </svg>
     </button>
   </footer>
 
-  <!-- ESCENARIO SVG PRINCIPAL: Gran Campo Sembrado de Girasoles a Pantalla Completa -->
+  <!-- ESCENARIO SVG PRINCIPAL: Campo de Tulipanes -->
   <div class="absolute inset-0 pointer-events-none z-10 flex items-end justify-center overflow-hidden">
     <svg id="fieldSvg" class="w-full h-full" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <!-- Gradientes para Pétalos Exteriores e Interiores -->
-        <linearGradient id="petalGradSunOuter" x1="0%" y1="100%" x2="0%" y2="0%">
-          <stop offset="0%" stop-color="#e65100"/>
-          <stop offset="30%" stop-color="#f57c00"/>
-          <stop offset="70%" stop-color="#fbc02d"/>
-          <stop offset="100%" stop-color="#fff59d"/>
+        <!-- Gradientes para Tulipán Rosa -->
+        <linearGradient id="tulipGradPinkOuter" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#be185d"/>
+          <stop offset="50%" stop-color="#ec4899"/>
+          <stop offset="100%" stop-color="#fbcfe8"/>
+        </linearGradient>
+        <linearGradient id="tulipGradPinkCenter" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#9d174d"/>
+          <stop offset="50%" stop-color="#db2777"/>
+          <stop offset="100%" stop-color="#fdf2f8"/>
         </linearGradient>
 
-        <linearGradient id="petalGradSunInner" x1="0%" y1="100%" x2="0%" y2="0%">
-          <stop offset="0%" stop-color="#bf360c"/>
-          <stop offset="35%" stop-color="#ff9800"/>
-          <stop offset="75%" stop-color="#ffeb3b"/>
-          <stop offset="100%" stop-color="#ffffff"/>
+        <!-- Gradientes para Tulipán Rojo Carmesí -->
+        <linearGradient id="tulipGradRedOuter" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#7f1d1d"/>
+          <stop offset="45%" stop-color="#dc2626"/>
+          <stop offset="100%" stop-color="#fca5a5"/>
+        </linearGradient>
+        <linearGradient id="tulipGradRedCenter" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#991b1b"/>
+          <stop offset="50%" stop-color="#ef4444"/>
+          <stop offset="100%" stop-color="#fee2e2"/>
         </linearGradient>
 
-        <!-- Gradientes de Tallos y Hojas -->
+        <!-- Gradientes para Tulipán Amarillo / Naranja cálido -->
+        <linearGradient id="tulipGradYellowOuter" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#c2410c"/>
+          <stop offset="40%" stop-color="#f59e0b"/>
+          <stop offset="100%" stop-color="#fef08a"/>
+        </linearGradient>
+        <linearGradient id="tulipGradYellowCenter" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#b45309"/>
+          <stop offset="50%" stop-color="#fbbf24"/>
+          <stop offset="100%" stop-color="#fef9c3"/>
+        </linearGradient>
+
+        <!-- Gradientes para Tulipán Morado / Violeta -->
+        <linearGradient id="tulipGradPurpleOuter" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#4c1d95"/>
+          <stop offset="45%" stop-color="#8b5cf6"/>
+          <stop offset="100%" stop-color="#ddd6fe"/>
+        </linearGradient>
+        <linearGradient id="tulipGradPurpleCenter" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#5b21b6"/>
+          <stop offset="50%" stop-color="#a855f7"/>
+          <stop offset="100%" stop-color="#f3e8ff"/>
+        </linearGradient>
+
+        <!-- Gradientes de Tallos y Hojas largas de tulipán -->
         <linearGradient id="stemGrad" x1="0%" y1="100%" x2="100%" y2="0%">
           <stop offset="0%" stop-color="#143317"/>
           <stop offset="50%" stop-color="#255d2b"/>
-          <stop offset="100%" stop-color="#43a047"/>
+          <stop offset="100%" stop-color="#4ade80"/>
         </linearGradient>
 
-        <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#81c784"/>
-          <stop offset="50%" stop-color="#388e3c"/>
-          <stop offset="100%" stop-color="#1b5e20"/>
+        <linearGradient id="tulipLeafGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#166534"/>
+          <stop offset="60%" stop-color="#22c55e"/>
+          <stop offset="100%" stop-color="#86efac"/>
         </linearGradient>
 
-        <!-- Centro de semillas del girasol -->
-        <radialGradient id="fieldSunflowerCore" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#ffb74d"/>
-          <stop offset="25%" stop-color="#bf360c"/>
-          <stop offset="60%" stop-color="#3e1b09"/>
-          <stop offset="90%" stop-color="#241005"/>
-          <stop offset="100%" stop-color="#120602"/>
+        <!-- Resplandor áurico suave del tulipán -->
+        <radialGradient id="tulipAuraGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#f472b6" stop-opacity="0.32"/>
+          <stop offset="50%" stop-color="#ec4899" stop-opacity="0.1"/>
+          <stop offset="100%" stop-color="#db2777" stop-opacity="0"/>
         </radialGradient>
 
-        <!-- Resplandor Dorado cálido -->
-        <radialGradient id="fieldAuraGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#ffd54f" stop-opacity="0.38"/>
-          <stop offset="50%" stop-color="#ff9800" stop-opacity="0.14"/>
-          <stop offset="100%" stop-color="#ff6f00" stop-opacity="0"/>
-        </radialGradient>
-
-        <!-- Niebla dorada y transición suave del horizonte sin cortes bruscos -->
+        <!-- Niebla ambiental del horizonte -->
         <linearGradient id="horizonGlow" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#ffb300" stop-opacity="0"/>
-          <stop offset="35%" stop-color="#ff9800" stop-opacity="0.08"/>
-          <stop offset="65%" stop-color="#ff8f00" stop-opacity="0.12"/>
-          <stop offset="85%" stop-color="#ff6f00" stop-opacity="0.05"/>
+          <stop offset="0%" stop-color="#ec4899" stop-opacity="0"/>
+          <stop offset="35%" stop-color="#db2777" stop-opacity="0.08"/>
+          <stop offset="65%" stop-color="#9d174d" stop-opacity="0.12"/>
+          <stop offset="85%" stop-color="#701a75" stop-opacity="0.05"/>
           <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
         </linearGradient>
 
-        <!-- Lomas de tierra fértil con desvanecimiento superior suave para evitar bordes cortantes -->
+        <!-- Suelo y lomas fértiles -->
         <linearGradient id="soilLayerGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#1c1208" stop-opacity="0"/>
-          <stop offset="12%" stop-color="#1c1208" stop-opacity="0.75"/>
-          <stop offset="35%" stop-color="#140d06" stop-opacity="0.95"/>
-          <stop offset="100%" stop-color="#060402" stop-opacity="1"/>
+          <stop offset="0%" stop-color="#190e1a" stop-opacity="0"/>
+          <stop offset="12%" stop-color="#190e1a" stop-opacity="0.75"/>
+          <stop offset="35%" stop-color="#110912" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#050205" stop-opacity="1"/>
         </linearGradient>
 
         <linearGradient id="soilLayerGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#26170a" stop-opacity="0"/>
-          <stop offset="10%" stop-color="#24180c" stop-opacity="0.82"/>
-          <stop offset="40%" stop-color="#160e06" stop-opacity="0.98"/>
-          <stop offset="100%" stop-color="#050302" stop-opacity="1"/>
+          <stop offset="0%" stop-color="#241122" stop-opacity="0"/>
+          <stop offset="10%" stop-color="#1f0f1d" stop-opacity="0.82"/>
+          <stop offset="40%" stop-color="#140813" stop-opacity="0.98"/>
+          <stop offset="100%" stop-color="#040104" stop-opacity="1"/>
         </linearGradient>
 
-        <!-- Velo de niebla ambiental cálida entre capas de flores -->
         <linearGradient id="meadowAtmosphericHaze" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#ffb300" stop-opacity="0.07"/>
-          <stop offset="50%" stop-color="#ff8f00" stop-opacity="0.04"/>
+          <stop offset="0%" stop-color="#f472b6" stop-opacity="0.06"/>
+          <stop offset="50%" stop-color="#be185d" stop-opacity="0.03"/>
           <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
         </linearGradient>
-
-        <filter id="fieldGlow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="6" result="blur"/>
-          <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-        </filter>
       </defs>
 
       <!-- Resplandor suave en el horizonte nocturno -->
       <rect x="0" y="320" width="1400" height="300" fill="url(#horizonGlow)"/>
 
-      <!-- Loma de fondo (Horizonte distante con transición suave) -->
+      <!-- Loma de fondo -->
       <path d="M 0 570 Q 350 510 700 550 T 1400 530 L 1400 900 L 0 900 Z" fill="url(#soilLayerGrad1)"/>
 
-      <!-- CAPA 1: Girasoles del fondo (lejanos y numerosos) -->
-      <g id="layerBackgroundSunflowers"></g>
+      <!-- CAPA 1: Tulipanes del fondo -->
+      <g id="layerBackgroundTulips"></g>
 
-      <!-- Velo suave de bruma antes de la loma media -->
+      <!-- Velo suave de bruma -->
       <rect x="0" y="580" width="1400" height="180" fill="url(#meadowAtmosphericHaze)"/>
 
-      <!-- Loma intermedia suavemente integrada -->
+      <!-- Loma intermedia -->
       <path d="M 0 650 Q 400 600 850 635 T 1400 615 L 1400 900 L 0 900 Z" fill="url(#soilLayerGrad2)"/>
 
-      <!-- CAPA 2: Girasoles de término medio (más grandes y definidos) -->
-      <g id="layerMidgroundSunflowers"></g>
+      <!-- CAPA 2: Tulipanes intermedios -->
+      <g id="layerMidgroundTulips"></g>
 
-      <!-- Loma frontal de tierra integrada -->
-      <path d="M 0 740 Q 300 700 700 730 T 1400 690 L 1400 900 L 0 900 Z" fill="#080503" opacity="0.96"/>
+      <!-- Loma frontal -->
+      <path d="M 0 740 Q 300 700 700 730 T 1400 690 L 1400 900 L 0 900 Z" fill="#080308" opacity="0.96"/>
 
-      <!-- CAPA 3: Girasoles del primer plano (gigantes, detallados y en plena floración) -->
-      <g id="layerForegroundSunflowers"></g>
+      <!-- CAPA 3: Tulipanes frontales en primer plano -->
+      <g id="layerForegroundTulips"></g>
 
-      <!-- Letrero rústico en el campo: Acceso a la carta -->
+      <!-- Letrero rústico en el campo: Acceso a la dedicatoria -->
       <g id="woodenSignpost" class="cursor-pointer pointer-events-auto" transform="translate(700, 750)">
-        <!-- Poste de madera enterrado -->
         <rect x="-7" y="10" width="14" height="110" rx="3" fill="#3e2723" stroke="#1b0000" stroke-width="1.5"/>
-        <!-- Tabla del cartel -->
         <g class="hover:scale-105 transition-transform duration-200">
-          <rect x="-85" y="-30" width="170" height="48" rx="8" fill="#5d4037" stroke="#ffb300" stroke-width="1.5" filter="drop-shadow(0 6px 12px rgba(0,0,0,0.8))"/>
-          <rect x="-80" y="-25" width="160" height="38" rx="6" fill="#4e342e"/>
-          <!-- Clavos en las esquinas -->
-          <circle cx="-73" cy="-11" r="2.5" fill="#ffd54f"/>
-          <circle cx="73" cy="-11" r="2.5" fill="#ffd54f"/>
-          <text x="0" y="-8" font-family="'Great Vibes', cursive" font-size="20" fill="#ffe082" text-anchor="middle" font-weight="bold">
+          <rect x="-85" y="-30" width="170" height="48" rx="8" fill="#522b3f" stroke="#f472b6" stroke-width="1.5" filter="drop-shadow(0 6px 12px rgba(0,0,0,0.8))"/>
+          <rect x="-80" y="-25" width="160" height="38" rx="6" fill="#3d1e2e"/>
+          <circle cx="-73" cy="-11" r="2.5" fill="#fbcfe8"/>
+          <circle cx="73" cy="-11" r="2.5" fill="#fbcfe8"/>
+          <text x="0" y="-8" font-family="'Great Vibes', cursive" font-size="20" fill="#fbcfe8" text-anchor="middle" font-weight="bold">
             Gracias por todo
           </text>
-          <text x="0" y="7" font-family="'Cinzel', serif" font-size="8.5" fill="#ffb300" text-anchor="middle" letter-spacing="2">
+          <text x="0" y="7" font-family="'Cinzel', serif" font-size="8.5" fill="#f472b6" text-anchor="middle" letter-spacing="2">
             TÓCAME CON AMOR
           </text>
         </g>
@@ -306,51 +315,55 @@
 
   <!-- MODAL DE LA CARTA DEDICATORIA -->
   <div id="letterModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
-    <div id="letterCard" class="glass-dark w-full max-w-lg rounded-3xl p-6 md:p-8 border border-yellow-400/40 text-left relative transform scale-95 transition-all duration-300 max-h-[92vh] flex flex-col shadow-[0_0_50px_rgba(255,215,0,0.25)]">
+    <div id="letterCard" class="glass-dark w-full max-w-lg rounded-3xl p-6 md:p-8 border border-pink-400/40 text-left relative transform scale-95 transition-all duration-300 max-h-[92vh] flex flex-col shadow-[0_0_50px_rgba(244,114,182,0.25)]">
       
       <!-- Botón cerrar modal -->
-      <button id="closeLetterBtn" aria-label="Cerrar carta" class="absolute top-4 right-4 text-yellow-200/70 hover:text-yellow-100 p-2 rounded-full hover:bg-yellow-400/15 transition-all">
+      <button id="closeLetterBtn" aria-label="Cerrar carta" class="absolute top-4 right-4 text-pink-200/70 hover:text-pink-100 p-2 rounded-full hover:bg-pink-400/15 transition-all">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
 
       <!-- Cabecera de la carta -->
-      <div class="text-center pb-3 border-b border-yellow-500/25">
-        <span class="text-[11px] uppercase tracking-widest text-amber-300 font-cinzel flex items-center justify-center gap-1.5 font-bold">
-          <span>🌻</span> Para mi negra <span>🌻</span>
+      <div class="text-center pb-3 border-b border-pink-500/25">
+        <span class="text-[11px] uppercase tracking-widest text-pink-300 font-cinzel flex items-center justify-center gap-1.5 font-bold">
+          <span>🌷</span> Para mi negra <span>🌷</span>
         </span>
-        <h2 id="recipientDisplayName" class="text-3xl md:text-4xl font-romantic text-yellow-200 mt-1 drop-shadow-[0_0_12px_rgba(255,215,0,0.6)]">
+        <h2 id="recipientDisplayName" class="text-3xl md:text-4xl font-romantic text-pink-200 mt-1 drop-shadow-[0_0_12px_rgba(244,114,182,0.6)]">
           Para Mi Persona Favorita
         </h2>
       </div>
 
       <!-- Texto con efecto máquina de escribir -->
       <div class="custom-scroll overflow-y-auto flex-1 my-4 pr-1">
-        <div id="typewriterText" class="text-sm md:text-base leading-relaxed text-amber-50/95 whitespace-pre-line font-light"></div>
+        <div id="typewriterText" class="text-sm md:text-base leading-relaxed text-pink-50/95 whitespace-pre-line font-light"></div>
       </div>
 
-      <!-- Pie de página de acciones -->
-      <div class="pt-3 border-t border-yellow-500/25"></div>
-
+      <div class="pt-3 border-t border-pink-500/25"></div>
     </div>
   </div>
 
   <script>
     /* =========================================================================
-       1. GENERADOR PROCEDURAL: Girasoles Sembrados con Tallos y Hojas
+       1. GENERADOR PROCEDURAL DE TULIPANES
        ========================================================================= */
 
-    // Genera un elemento individual de girasol sembrado con tallo orgánico y hojas
-    function createPlantedSunflower({
+    const tulipColorPalettes = [
+      { outer: 'url(#tulipGradPinkOuter)', center: 'url(#tulipGradPinkCenter)' },
+      { outer: 'url(#tulipGradRedOuter)', center: 'url(#tulipGradRedCenter)' },
+      { outer: 'url(#tulipGradYellowOuter)', center: 'url(#tulipGradYellowCenter)' },
+      { outer: 'url(#tulipGradPurpleOuter)', center: 'url(#tulipGradPurpleCenter)' }
+    ];
+
+    function createPlantedTulip({
       baseX,
       baseY,
       height,
-      headRadius,
+      headScale = 1,
       curveOffsetX = 0,
       swayType = 'sway-center',
       delay = 0,
-      petalsCount = 14
+      colorIndex = 0
     }) {
       const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       g.setAttribute('class', `${swayType}`);
@@ -360,111 +373,98 @@
       const flowerHeadX = baseX + curveOffsetX;
       const flowerHeadY = baseY - height;
 
-      // 1. Tallo curvado
+      // 1. Tallo estilizado de tulipán
       const stem = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      const controlX = baseX + curveOffsetX * 0.4;
+      const controlX = baseX + curveOffsetX * 0.45;
       const controlY = baseY - height * 0.55;
       stem.setAttribute('d', `M ${baseX} ${baseY} Q ${controlX} ${controlY} ${flowerHeadX} ${flowerHeadY}`);
       stem.setAttribute('stroke', 'url(#stemGrad)');
-      stem.setAttribute('stroke-width', Math.max(3.5, headRadius * 0.22));
+      stem.setAttribute('stroke-width', Math.max(3.2, headScale * 3.8));
       stem.setAttribute('stroke-linecap', 'round');
       stem.setAttribute('class', 'stem-grow');
       stem.style.animationDelay = `${delay}s`;
       g.appendChild(stem);
 
-      // 2. Hojas verdes a los costados del tallo
-      const leafCount = height > 140 ? 2 : 1;
+      // 2. Hojas lanceoladas características de tulipán (altas y esbeltas)
+      const leafCount = height > 110 ? 2 : 1;
       for (let l = 0; l < leafCount; l++) {
-        const t = 0.35 + l * 0.28;
-        const lx = baseX + (controlX - baseX) * t * 1.5;
+        const t = 0.2 + l * 0.25;
+        const lx = baseX + (controlX - baseX) * t * 1.3;
         const ly = baseY - height * t;
         const dir = l % 2 === 0 ? 1 : -1;
 
         const leafG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         leafG.setAttribute('class', 'flower-bloom');
-        leafG.style.animationDelay = `${delay + 0.3 + l * 0.15}s`;
+        leafG.style.animationDelay = `${delay + 0.25 + l * 0.15}s`;
         leafG.style.transformOrigin = `${lx}px ${ly}px`;
 
+        const leafH = height * 0.65;
+        const leafW = 12 * headScale;
         const leaf = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        const leafLen = headRadius * 1.4;
-        const leafW = headRadius * 0.55;
-        leaf.setAttribute('d', `M ${lx} ${ly} Q ${lx + dir * leafLen * 0.6} ${ly - leafW} ${lx + dir * leafLen} ${ly - 8} Q ${lx + dir * leafLen * 0.6} ${ly + leafW * 0.6} ${lx} ${ly}`);
-        leaf.setAttribute('fill', 'url(#leafGrad)');
-        leaf.setAttribute('opacity', '0.92');
+        leaf.setAttribute('d', `M ${lx} ${ly} Q ${lx + dir * leafW * 1.8} ${ly - leafH * 0.5} ${lx + dir * leafW * 0.8} ${ly - leafH} Q ${lx + dir * leafW * 0.2} ${ly - leafH * 0.4} ${lx} ${ly}`);
+        leaf.setAttribute('fill', 'url(#tulipLeafGrad)');
+        leaf.setAttribute('opacity', '0.9');
         leafG.appendChild(leaf);
         g.appendChild(leafG);
       }
 
-      // 3. Cabeza del Girasol (Flor)
+      // 3. Cáliz y Pétalos del Tulipán
       const headG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       headG.setAttribute('class', 'flower-bloom');
-      headG.style.animationDelay = `${delay + 0.5}s`;
+      headG.style.animationDelay = `${delay + 0.45}s`;
       headG.style.transformOrigin = `${flowerHeadX}px ${flowerHeadY}px`;
 
-      // Resplandor áurico individual
+      // Aura tenue
       const aura = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       aura.setAttribute('cx', flowerHeadX);
-      aura.setAttribute('cy', flowerHeadY);
-      aura.setAttribute('r', headRadius * 1.4);
-      aura.setAttribute('fill', 'url(#fieldAuraGlow)');
+      aura.setAttribute('cy', flowerHeadY - 20 * headScale);
+      aura.setAttribute('r', 32 * headScale);
+      aura.setAttribute('fill', 'url(#tulipAuraGlow)');
       headG.appendChild(aura);
 
-      // Corona Exterior de Pétalos
-      for (let i = 0; i < petalsCount; i++) {
-        const angle = (i * 360) / petalsCount;
-        const petal = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
-        petal.setAttribute('cx', flowerHeadX);
-        petal.setAttribute('cy', flowerHeadY - headRadius * 0.72);
-        petal.setAttribute('rx', headRadius * 0.28);
-        petal.setAttribute('ry', headRadius * 0.7);
-        petal.setAttribute('fill', 'url(#petalGradSunOuter)');
-        petal.setAttribute('transform', `rotate(${angle}, ${flowerHeadX}, ${flowerHeadY})`);
-        headG.appendChild(petal);
-      }
+      const pal = tulipColorPalettes[colorIndex % tulipColorPalettes.length];
+      const s = headScale;
 
-      // Corona Interior de Pétalos Intercalados
-      for (let i = 0; i < petalsCount; i++) {
-        const angle = (i * 360) / petalsCount + (180 / petalsCount);
-        const petalIn = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
-        petalIn.setAttribute('cx', flowerHeadX);
-        petalIn.setAttribute('cy', flowerHeadY - headRadius * 0.58);
-        petalIn.setAttribute('rx', headRadius * 0.22);
-        petalIn.setAttribute('ry', headRadius * 0.54);
-        petalIn.setAttribute('fill', 'url(#petalGradSunInner)');
-        petalIn.setAttribute('transform', `rotate(${angle}, ${flowerHeadX}, ${flowerHeadY})`);
-        headG.appendChild(petalIn);
-      }
+      // Flor de Tulipán (SVG escalado de cáliz y pétalos envolventes)
+      const tulipFlower = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      tulipFlower.setAttribute('transform', `translate(${flowerHeadX}, ${flowerHeadY}) scale(${s})`);
 
-      // Núcleo de semillas
-      const core = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      core.setAttribute('cx', flowerHeadX);
-      core.setAttribute('cy', flowerHeadY);
-      core.setAttribute('r', headRadius * 0.44);
-      core.setAttribute('fill', 'url(#fieldSunflowerCore)');
-      headG.appendChild(core);
+      // Pétalo posterior central
+      const backPetal = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      backPetal.setAttribute('d', 'M 0 0 C -8 -15, -10 -35, 0 -48 C 10 -35, 8 -15, 0 0 Z');
+      backPetal.setAttribute('fill', pal.center);
+      backPetal.setAttribute('opacity', '0.92');
+      tulipFlower.appendChild(backPetal);
 
-      // Semillas concéntricas doradas
-      const seedR = headRadius * 0.24;
-      for (let s = 0; s < 6; s++) {
-        const sAngle = (s * Math.PI) / 3;
-        const seedDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        seedDot.setAttribute('cx', flowerHeadX + Math.cos(sAngle) * seedR);
-        seedDot.setAttribute('cy', flowerHeadY + Math.sin(sAngle) * seedR);
-        seedDot.setAttribute('r', Math.max(1, headRadius * 0.055));
-        seedDot.setAttribute('fill', '#ffe082');
-        seedDot.setAttribute('opacity', '0.85');
-        headG.appendChild(seedDot);
-      }
+      // Pétalo lateral izquierdo
+      const leftPetal = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      leftPetal.setAttribute('d', 'M 0 0 C -18 -8, -25 -32, -12 -45 C -4 -42, -2 -22, 0 0 Z');
+      leftPetal.setAttribute('fill', pal.outer);
+      tulipFlower.appendChild(leftPetal);
 
+      // Pétalo lateral derecho
+      const rightPetal = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      rightPetal.setAttribute('d', 'M 0 0 C 18 -8, 25 -32, 12 -45 C 4 -42, 2 -22, 0 0 Z');
+      rightPetal.setAttribute('fill', pal.outer);
+      tulipFlower.appendChild(rightPetal);
+
+      // Pétalo frontal central suave
+      const centerPetal = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      centerPetal.setAttribute('d', 'M 0 0 C -12 -12, -15 -35, 0 -44 C 15 -35, 12 -12, 0 0 Z');
+      centerPetal.setAttribute('fill', pal.center);
+      centerPetal.setAttribute('opacity', '0.96');
+      tulipFlower.appendChild(centerPetal);
+
+      headG.appendChild(tulipFlower);
       g.appendChild(headG);
       return g;
     }
 
-    // Construcción completa del campo en 3 capas de profundidad
-    function buildMeadowOfSunflowers() {
-      const bgLayer = document.getElementById('layerBackgroundSunflowers');
-      const midLayer = document.getElementById('layerMidgroundSunflowers');
-      const fgLayer = document.getElementById('layerForegroundSunflowers');
+    // Construcción completa del campo de tulipanes en 3 capas
+    function buildMeadowOfTulips() {
+      const bgLayer = document.getElementById('layerBackgroundTulips');
+      const midLayer = document.getElementById('layerMidgroundTulips');
+      const fgLayer = document.getElementById('layerForegroundTulips');
 
       bgLayer.innerHTML = '';
       midLayer.innerHTML = '';
@@ -472,84 +472,83 @@
 
       const swayStyles = ['sway-left', 'sway-center', 'sway-right'];
 
-      // 1. CAPA LEJANA (Horizonte): Girasoles multiplicados para un mar continuo
-      const bgCount = 48;
+      // 1. CAPA LEJANA (Horizonte tupido de tulipanes)
+      const bgCount = 52;
       for (let i = 0; i < bgCount; i++) {
         const x = (i * 1440) / (bgCount - 1) - 20 + (Math.random() * 24 - 12);
         const y = 590 + Math.random() * 55;
-        const h = 70 + Math.random() * 50;
-        const rad = 13 + Math.random() * 7;
-        const curve = (Math.random() - 0.5) * 38;
+        const h = 75 + Math.random() * 45;
+        const curve = (Math.random() - 0.5) * 32;
         const sway = swayStyles[i % 3];
         const delay = 0.08 + (i / bgCount) * 0.5 + Math.random() * 0.15;
+        const colorIdx = Math.floor(Math.random() * 4);
 
-        bgLayer.appendChild(createPlantedSunflower({
+        bgLayer.appendChild(createPlantedTulip({
           baseX: x,
           baseY: y,
           height: h,
-          headRadius: rad,
+          headScale: 0.55 + Math.random() * 0.25,
           curveOffsetX: curve,
           swayType: sway,
           delay: delay,
-          petalsCount: 11
+          colorIndex: colorIdx
         }));
       }
 
-      // 2. CAPA MEDIA: Girasoles abundantes y escalonados
-      const midCount = 34;
+      // 2. CAPA MEDIA: Tulipanes definidos y elegantes
+      const midCount = 36;
       for (let i = 0; i < midCount; i++) {
-        const x = (i * 1440) / (midCount - 1) - 20 + (Math.random() * 32 - 16);
+        const x = (i * 1440) / (midCount - 1) - 20 + (Math.random() * 30 - 15);
         const y = 675 + Math.random() * 55;
-        const h = 115 + Math.random() * 65;
-        const rad = 22 + Math.random() * 9;
-        const curve = (Math.random() - 0.5) * 55;
+        const h = 120 + Math.random() * 60;
+        const curve = (Math.random() - 0.5) * 45;
         const sway = swayStyles[(i + 1) % 3];
         const delay = 0.25 + (i / midCount) * 0.55 + Math.random() * 0.2;
+        const colorIdx = (i + Math.floor(Math.random() * 2)) % 4;
 
-        midLayer.appendChild(createPlantedSunflower({
+        midLayer.appendChild(createPlantedTulip({
           baseX: x,
           baseY: y,
           height: h,
-          headRadius: rad,
+          headScale: 0.95 + Math.random() * 0.35,
           curveOffsetX: curve,
           swayType: sway,
           delay: delay,
-          petalsCount: 13
+          colorIndex: colorIdx
         }));
       }
 
-      // 3. CAPA FRONTAL: Grandes girasoles majestuosos y tupidos
-      const fgCount = 20;
+      // 3. CAPA FRONTAL: Grandes y vistosos tulipanes en primer plano
+      const fgCount = 22;
       for (let i = 0; i < fgCount; i++) {
         const norm = i / (fgCount - 1);
         let x = norm * 1440 - 20 + (Math.random() * 36 - 18);
-        // Respetar ligeramente el centro para el letrero rústico
         if (x > 635 && x < 765) {
           x = norm < 0.5 ? 615 : 785;
         }
 
         const y = 825 + Math.random() * 60;
-        const h = 185 + Math.random() * 80;
-        const rad = 35 + Math.random() * 14;
-        const curve = (Math.random() - 0.5) * 75;
+        const h = 180 + Math.random() * 75;
+        const curve = (Math.random() - 0.5) * 60;
         const sway = swayStyles[(i + 2) % 3];
         const delay = 0.45 + (i / fgCount) * 0.55 + Math.random() * 0.15;
+        const colorIdx = i % 4;
 
-        fgLayer.appendChild(createPlantedSunflower({
+        fgLayer.appendChild(createPlantedTulip({
           baseX: x,
           baseY: y,
           height: h,
-          headRadius: rad,
+          headScale: 1.5 + Math.random() * 0.45,
           curveOffsetX: curve,
           swayType: sway,
           delay: delay,
-          petalsCount: 15
+          colorIndex: colorIdx
         }));
       }
     }
 
     /* =========================================================================
-       2. CANVASES DE FONDO: Cielo Estrellado, Luciérnagas y Pétalos Flotantes
+       2. CANVASES: Estrellas, Partículas de Luz y Pétalos Flotantes
        ========================================================================= */
 
     const starsCanvas = document.getElementById('starsCanvas');
@@ -568,7 +567,6 @@
       initStars();
     });
 
-    // Estrellas tenues y fijas en el fondo oscuro
     let starList = [];
     function initStars() {
       starList = [];
@@ -590,7 +588,7 @@
       starList.forEach(st => {
         st.phase += st.twinkleSpeed;
         const alpha = st.baseAlpha + Math.sin(st.phase) * 0.2;
-        sctx.fillStyle = `rgba(255, 248, 220, ${Math.max(0.05, alpha)})`;
+        sctx.fillStyle = `rgba(255, 235, 245, ${Math.max(0.05, alpha)})`;
         sctx.beginPath();
         sctx.arc(st.x, st.y, st.radius, 0, Math.PI * 2);
         sctx.fill();
@@ -598,7 +596,7 @@
       requestAnimationFrame(drawStarField);
     }
 
-    // Enjambre de luciérnagas luminosas doradas y verdes cálidas
+    // Luciérnagas rosadas y doradas
     const fireflyList = [];
     const totalFireflies = 55;
 
@@ -612,11 +610,11 @@
         pulseSpeed: 0.03 + Math.random() * 0.04,
         pulsePhase: Math.random() * Math.PI * 2,
         wanderAngle: Math.random() * Math.PI * 2,
-        colorTone: Math.random() > 0.35 ? '#ffe082' : '#c6ff00'
+        colorTone: Math.random() > 0.4 ? '#f472b6' : '#fbcfe8'
       });
     }
 
-    // Pétalos dorados flotantes mecidos por la brisa
+    // Pétalos de tulipán flotantes
     const floatingPetals = [];
     const totalPetals = 30;
 
@@ -624,27 +622,25 @@
       floatingPetals.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        rx: 3 + Math.random() * 4,
-        ry: 6.5 + Math.random() * 7.5,
-        speedY: 0.5 + Math.random() * 0.75,
+        rx: 4 + Math.random() * 4,
+        ry: 7 + Math.random() * 8,
+        speedY: 0.45 + Math.random() * 0.75,
         speedX: (Math.random() - 0.5) * 0.7,
         angle: Math.random() * Math.PI * 2,
         rotSpeed: 0.015 + Math.random() * 0.03,
-        alpha: 0.3 + Math.random() * 0.45
+        alpha: 0.35 + Math.random() * 0.45
       });
     }
 
     function renderAmbientLoop() {
       actx.clearRect(0, 0, width, height);
 
-      // 1. Renderizado de luciérnagas con brillo dinámico y trayectoria flotante
       fireflyList.forEach(f => {
         f.pulsePhase += f.pulseSpeed;
         f.wanderAngle += 0.02;
         f.y += f.speedY;
         f.x += Math.sin(f.wanderAngle) * 0.6 + f.speedX;
 
-        // Reposicionar al salir hacia arriba o laterales
         if (f.y < height * 0.1) {
           f.y = height + 15;
           f.x = Math.random() * width;
@@ -657,16 +653,14 @@
         actx.save();
         actx.translate(f.x, f.y);
 
-        // Halo resplandeciente exterior
         const glowGrad = actx.createRadialGradient(0, 0, 0, 0, 0, f.radius * 4.5);
-        glowGrad.addColorStop(0, f.colorTone === '#ffe082' ? 'rgba(255, 224, 130, 0.4)' : 'rgba(198, 255, 0, 0.35)');
+        glowGrad.addColorStop(0, 'rgba(244, 114, 182, 0.4)');
         glowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
         actx.fillStyle = glowGrad;
         actx.beginPath();
         actx.arc(0, 0, f.radius * 4.5, 0, Math.PI * 2);
         actx.fill();
 
-        // Núcleo luminoso
         actx.fillStyle = f.colorTone;
         actx.globalAlpha = currentAlpha;
         actx.shadowBlur = 14;
@@ -678,7 +672,6 @@
         actx.restore();
       });
 
-      // 2. Renderizado de pétalos dorados en descenso suave
       floatingPetals.forEach(p => {
         p.angle += p.rotSpeed;
         p.y += p.speedY;
@@ -694,9 +687,9 @@
         actx.save();
         actx.translate(p.x, p.y);
         actx.rotate(p.angle);
-        actx.fillStyle = `rgba(255, 213, 79, ${p.alpha})`;
+        actx.fillStyle = `rgba(244, 114, 182, ${p.alpha})`;
         actx.shadowBlur = 8;
-        actx.shadowColor = 'rgba(255, 193, 7, 0.35)';
+        actx.shadowColor = 'rgba(236, 72, 153, 0.35)';
         actx.beginPath();
         actx.ellipse(0, 0, p.rx, p.ry, 0, 0, Math.PI * 2);
         actx.fill();
@@ -706,7 +699,7 @@
       requestAnimationFrame(renderAmbientLoop);
     }
 
-    // Chispas, corazones y florecimiento al tocar la pantalla
+    // Chispas y corazones al hacer clic
     const touchSparks = [];
 
     function triggerSparksAt(clickX, clickY) {
@@ -722,8 +715,8 @@
           radius: 2.5 + Math.random() * 3.5,
           alpha: 1,
           decay: 0.015 + Math.random() * 0.02,
-          isHeart: Math.random() > 0.6,
-          color: Math.random() > 0.4 ? '#ffd54f' : '#ffb300'
+          isHeart: Math.random() > 0.55,
+          color: Math.random() > 0.4 ? '#f472b6' : '#fb7185'
         });
       }
     }
@@ -758,7 +751,7 @@
         ictx.globalAlpha = s.alpha;
         ictx.fillStyle = s.color;
         ictx.shadowBlur = 12;
-        ictx.shadowColor = '#ffe082';
+        ictx.shadowColor = '#f472b6';
 
         if (s.isHeart) {
           drawSparkHeart(ictx, s.x, s.y, s.radius * 3.2);
@@ -779,11 +772,11 @@
     });
 
     /* =========================================================================
-       3. MODAL DE CARTA: Typewriter, Guardado y Copiado Seguro
+       3. MODAL DE CARTA
        ========================================================================= */
 
-    const defaultRecipient = "Para Mi Persona Favorita 💛";
-    const defaultLetter = `No importa si hoy no es un dia especial, pero igual te hice este campo de girasoles para ti sola.
+    const defaultRecipient = "Para Mi Persona Favorita 🌷";
+    const defaultLetter = `No importa si hoy no es un dia especial, pero igual te hice este campo de tulipanes para ti sola.
 
 Se que no te gusta o almenos dices que "No" todo el tiempo pero me gustaria que recibas esto no por compromiso sino como agradecimiento por sacarme de ese momento donde estaba perdido y aburrido de lo que hago siempre (levantarme y dormir).
 
@@ -801,16 +794,9 @@ Atte. Un desconocido`;
     const closeLetterBtn = document.getElementById('closeLetterBtn');
     const typewriterText = document.getElementById('typewriterText');
     const recipientDisplayName = document.getElementById('recipientDisplayName');
-
     const woodenSignpost = document.getElementById('woodenSignpost');
 
     let typeWriterTimer = null;
-
-    function getLetterData() {
-      const name = defaultRecipient;
-      const body = defaultLetter;
-      return { name, body };
-    }
 
     function runTypewriter(text) {
       if (typeWriterTimer) clearInterval(typeWriterTimer);
@@ -827,14 +813,11 @@ Atte. Un desconocido`;
     }
 
     function openLetterModal() {
-      const data = getLetterData();
-      recipientDisplayName.textContent = data.name;
-
+      recipientDisplayName.textContent = defaultRecipient;
       letterModal.classList.remove('opacity-0', 'pointer-events-none');
       letterCard.classList.remove('scale-95');
       letterCard.classList.add('scale-100');
-
-      runTypewriter(data.body);
+      runTypewriter(defaultLetter);
     }
 
     function closeLetterModal() {
@@ -857,12 +840,10 @@ Atte. Un desconocido`;
     }
 
     /* =========================================================================
-       4. SINTETIZADOR WEB AUDIO API: Melodía Pentatónica de Ensueño
+       4. AUDIO Y SONIDOS
        ========================================================================= */
 
     let audioContext = null;
-    let melodyTimer = null;
-
     const musicToggleBtn = document.getElementById('musicToggleBtn');
     const musicIconPlay = document.getElementById('musicIconPlay');
     const musicIconPause = document.getElementById('musicIconPause');
@@ -905,7 +886,7 @@ Atte. Un desconocido`;
 
     function playHarpChime() {
       getOrCreateAudioContext();
-      const chimeFreq = 780 + Math.random() * 450;
+      const chimeFreq = 820 + Math.random() * 400;
       playTone(chimeFreq, 0.9, 0.06);
     }
 
@@ -929,19 +910,18 @@ Atte. Un desconocido`;
 
     musicToggleBtn.addEventListener('click', toggleMelody);
 
-    // Botón de re-florecimiento del campo completo
     const rebloomBtn = document.getElementById('rebloomBtn');
     rebloomBtn.addEventListener('click', () => {
-      buildMeadowOfSunflowers();
+      buildMeadowOfTulips();
       playHarpChime();
     });
 
     /* =========================================================================
-       5. INICIALIZACIÓN GENERAL
+       5. INICIALIZACIÓN
        ========================================================================= */
     window.addEventListener('load', () => {
       initStars();
-      buildMeadowOfSunflowers();
+      buildMeadowOfTulips();
       drawStarField();
       renderAmbientLoop();
       renderInteractiveLoop();
